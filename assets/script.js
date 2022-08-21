@@ -2,9 +2,14 @@ var startQuiz = document.querySelector('.start-quiz');
 
 var timerEl = document.getElementById('timer');
 
+// Shows Time as empty until the quiz has begun
+timerEl.textContent = 'Time: ' + '';
+
+
 // Timer that counts down from 100
 function countDown() {
     var timeLeft = 100;
+
 
     var timeInterval = setInterval(function () {
         if (timeLeft > 0) {

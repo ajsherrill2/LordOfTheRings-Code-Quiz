@@ -1,0 +1,52 @@
+/* Style Variables */
+:root {
+    /* theme from https://www.color-hex.com/color-palette/98179 dark theme */
+    --white: #fff;
+    --blue: #007acc;
+    --gray-1: #c0c0c0;
+    --gray-2: #3e3e42;
+    --gray-3: #2d2d30;
+    --black-1: #252526;
+    --black-2: #1e1e1e;
+    --box-shadow: 0 1px 4px 0px rgb(0 0 0 / 20%);
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: var(--gray-2);
+    font-family: sans-serif, monospace;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    /* Pushes left and right item to for edges and items in middle will be evenly spaced */
+   justify-content: space-between;
+   align-items: center;
+   background-color: var(--black-1);
+   box-shadow: 0 1px 8px var(--black-2);
+   width: auto;
+   height: fit-content;
+   padding: 0 3% 0 3%;
+}
+
+.highscores {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 300;
+    font-size: 1.3rem;
+}
+
+#timer {
+    color: var(--white);
+    
+}
+
