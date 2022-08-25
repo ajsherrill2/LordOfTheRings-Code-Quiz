@@ -53,21 +53,71 @@ header {
     padding: 2%;
     box-shadow: 0 1px 8px var(--black-2);
     background: var(--black-1);
+    font-family: tangerine, sans-serif, monospace;
 }
 
-.container h1 {
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--blue);
-    font-family: tangerine, sans-serif, monospace;
     font-weight: 600;
     font-size: 2.5rem;
+    font-family: tangerine, sans-serif, monospace;
+    margin: 0;
 }
 
 .container p {
     color: var(--gray-1);
-    font-family: tangerine, sans-serif, monospace;
     font-size: 2rem;
     margin-top: 0;
 }
 
+.container button {
+    background: var(--black-2);
+    color: var(--gray-1);
+    font-size: 1.2rem;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 1px 8px black;
+    border-radius: 5%;
+}
+
+.box-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 20% 2% 20%;
+    padding: 2%;
+    box-shadow: 0 1px 8px var(--black-2);
+    background: var(--black-1);
+}
+
+.box-card p {
+    font-size: 1.5rem;
+    font-family: sans-serif,'Courier New', Courier, monospace;
+}
+
+.box-card ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.box-card li {
+    list-style: none;
+}
+
+.box-card button {
+    margin: 0 10px 0 10px;
+    background: var(--black-2);
+    color: var(--gray-1);
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    box-shadow: 0 1px 8px black;
+    border-radius: 5%;
+}
 
 
