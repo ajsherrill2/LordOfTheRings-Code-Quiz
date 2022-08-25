@@ -33,12 +33,18 @@ function playGame() {
         hide.style.display = 'none';
     }
 
+    // Reveals the first question
     var revealQuestion = document.getElementById('question');
     if (revealQuestion.style.display === 'none') {
         revealQuestion.style.display = 'flex';
     }
 
-    var timesUp
+    // Ends game if time runs out
+    var gameOver = document.getElementById('game-over');
+    if (timeLeft === 0) {
+        gameOver.style.display = 'flex';
+    }
+
 
     nextQuestion()
   
@@ -111,10 +117,67 @@ function checkAnswer(e) {
         questionIndex++;
         nextQuestion();
     } else {
-        timeLeft -= 10;
+        timeLeft -= 20;
         // finalScore --;
         questionIndex++;
         nextQuestion();
     }
    
 }
+
+var initials = document.querySelector('#player-initials');
+var scoreForm = document.querySelector('#save-score');
+var scoreboard = document.querySelector('#scoreboard');
+
+var allScores = [];
+
+// Renders saved scores into scoreboard as <li> elements
+function renderScores() {
+    scoreboard.innerHTML = '';
+
+    // Render a new li for each score
+    for (var i = 0; i < allScores.length; i++) {
+        var score = allScores[i];
+
+        var li = document.createElement('li');
+        li.textContent = score;
+        li.setAttribute('data-index', i);
+
+        scoreboard.appendChild(li);
+    }
+}
+
+function init() {
+    // Gets stored scores from localStorage
+    var storedScores = JSON.parse(localStorage.getItem('allScores'));
+
+    // Updates scores to array if they were retrieved from localStorage
+    if (storedScores !== null) {
+        allScores = storedScores;
+    }
+
+    // Renders scores to the DOM
+    renderScores();
+}
+
+function storeScores() {
+    localStorage.setItem('allScores', JSON.stringify(allScores));
+}
+
+scoreForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var initialsText = initials.value.trim();
+
+    if (initialsText === '') {
+        return;
+    }
+
+    allScores.push(initialsText);
+    initials.value = '';
+
+    storeScores();
+    renderScores();
+});
+
+init()
