@@ -15,10 +15,15 @@ var timeLeft = 100;
 // Timer that counts down from 100
 function playGame() {
 
+    var recordScore = document.getElementById('score');
     var timeInterval = setInterval(function () {
         if (timeLeft > 0) {
             timerEl.textContent = 'Time: ' + timeLeft;
             timeLeft--;
+        } else if (timeLeft <= 0) {
+            timerEl.textContent = 'Time: ' + 0;
+            revealQuestion.style.display = 'none'
+            recordScore.style.display = 'flex';
         } else {
             timerEl.textContent = 'Time: ' + 0;
             clearInterval(timeInterval);
@@ -38,13 +43,6 @@ function playGame() {
     if (revealQuestion.style.display === 'none') {
         revealQuestion.style.display = 'flex';
     }
-
-    // Ends game if time runs out
-    var gameOver = document.getElementById('game-over');
-    if (timeLeft === 0) {
-        gameOver.style.display = 'flex';
-    }
-
 
     nextQuestion()
   
@@ -118,7 +116,6 @@ function checkAnswer(e) {
         nextQuestion();
     } else {
         timeLeft -= 20;
-        // finalScore --;
         questionIndex++;
         nextQuestion();
     }
@@ -180,4 +177,5 @@ scoreForm.addEventListener('submit', function(event) {
     renderScores();
 });
 
+// Calls the inititial function
 init()
