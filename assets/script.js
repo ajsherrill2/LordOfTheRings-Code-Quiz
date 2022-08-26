@@ -192,8 +192,15 @@ scoreForm.addEventListener('submit', function(event) {
         return;
     }
 
-    allScores.push(initialsText);
+    let currentScore = {
+        initialsText,
+        finalScore,
+    };
+
+    allScores.unshift(currentScore);
     initials.value = '';
+
+    console.log(allScores);
 
     storeScores();
     renderScores();
