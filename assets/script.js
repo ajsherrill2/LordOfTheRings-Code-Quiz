@@ -16,11 +16,12 @@ timerEl.textContent = 'Time: ' + '';
 
 // Globally scoped timer
 var timeLeft = 100;
+let timeInterval;
 
 // Timer that counts down from 100
 function playGame() {
 
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         if (timeLeft > 0) {
             timerEl.textContent = 'Time: ' + timeLeft;
             timeLeft--;
@@ -106,9 +107,13 @@ function nextQuestion() {
         choiceC.textContent = questions[questionIndex].choice3;
         choiceD.textContent = questions[questionIndex].choice4;
     } else {
+        finalScore = timeLeft;
+        clearInterval(timeInterval);
         gameOver();
     }
 }
+
+let finalScore;
 
 choiceA.addEventListener('click', checkAnswer);
 choiceB.addEventListener('click', checkAnswer);
@@ -127,23 +132,27 @@ function checkAnswer(e) {
 }
 
 function gameOver() {
-    hide.style.display = 'none'
-    revealQuestion.style.display = 'none'
-    recordScore.style.display = 'flex'
-    console.log(timeLeft);
+    hide.style.display = 'none';
+    revealQuestion.style.display = 'none';
+    timerEl.style.display = 'none';
+    recordScore.style.display = 'flex';
+    console.log(finalScore);
+    scoreValue.innerText = finalScore;
 }
 
 // variables for Scoreboard
 var initials = document.querySelector('#player-initials');
 var scoreForm = document.querySelector('#save-score');
 var scoreboard = document.querySelector('#scoreboard');
+var scoreValue = document.getElementById('score-value');
 
 var allScores = [];
-var scoreValues = [];
 
 // Renders saved scores into scoreboard as <li> elements
 function renderScores() {
     scoreboard.innerHTML = '';
+
+
 
     // Render a new li for each score
     for (var i = 0; i < allScores.length; i++) {
