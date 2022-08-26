@@ -1,6 +1,11 @@
 // Function and variables for starting the quiz and timer
 var startQuiz = document.querySelector('.start-quiz');
 var timerEl = document.getElementById('timer');
+var revealQuestion = document.getElementById('question');
+var recordScore = document.getElementById('score');
+var hide = document.getElementById('intro');
+
+
 
 startQuiz.addEventListener('click', function() {
     playGame()
@@ -15,15 +20,13 @@ var timeLeft = 100;
 // Timer that counts down from 100
 function playGame() {
 
-    var recordScore = document.getElementById('score');
     var timeInterval = setInterval(function () {
         if (timeLeft > 0) {
             timerEl.textContent = 'Time: ' + timeLeft;
             timeLeft--;
         } else if (timeLeft <= 0) {
             timerEl.textContent = 'Time: ' + 0;
-            revealQuestion.style.display = 'none'
-            recordScore.style.display = 'flex';
+            gameOver();
         } else {
             timerEl.textContent = 'Time: ' + 0;
             clearInterval(timeInterval);
@@ -31,7 +34,6 @@ function playGame() {
     }, 1000);
 
     // hides the intro section after 'click'
-    var hide = document.getElementById('intro');
     if (hide.style.display === 'none') {
         hide.style.display = 'block';
     } else {
@@ -39,7 +41,6 @@ function playGame() {
     }
 
     // Reveals the first question
-    var revealQuestion = document.getElementById('question');
     if (revealQuestion.style.display === 'none') {
         revealQuestion.style.display = 'flex';
     }
@@ -97,12 +98,16 @@ var choiceD = document.getElementById('choice-d');
 var questionIndex = 0
 
 function nextQuestion() {
-    questionTitle.textContent = questions[questionIndex].questionNum;
-    questionText.textContent = questions[questionIndex].question;
-    choiceA.textContent = questions[questionIndex].choice1
-    choiceB.textContent = questions[questionIndex].choice2
-    choiceC.textContent = questions[questionIndex].choice3
-    choiceD.textContent = questions[questionIndex].choice4
+    if (questionIndex < questions.length) {
+        questionTitle.textContent = questions[questionIndex].questionNum;
+        questionText.textContent = questions[questionIndex].question;
+        choiceA.textContent = questions[questionIndex].choice1;
+        choiceB.textContent = questions[questionIndex].choice2;
+        choiceC.textContent = questions[questionIndex].choice3;
+        choiceD.textContent = questions[questionIndex].choice4;
+    } else {
+        gameOver();
+    }
 }
 
 choiceA.addEventListener('click', checkAnswer);
@@ -118,15 +123,23 @@ function checkAnswer(e) {
         timeLeft -= 20;
         questionIndex++;
         nextQuestion();
-    }
-   
+    }  
 }
 
+function gameOver() {
+    hide.style.display = 'none'
+    revealQuestion.style.display = 'none'
+    recordScore.style.display = 'flex'
+    console.log(timeLeft);
+}
+
+// variables for Scoreboard
 var initials = document.querySelector('#player-initials');
 var scoreForm = document.querySelector('#save-score');
 var scoreboard = document.querySelector('#scoreboard');
 
 var allScores = [];
+var scoreValues = [];
 
 // Renders saved scores into scoreboard as <li> elements
 function renderScores() {
