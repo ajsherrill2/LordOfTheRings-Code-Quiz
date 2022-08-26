@@ -136,8 +136,8 @@ function gameOver() {
     revealQuestion.style.display = 'none';
     timerEl.style.display = 'none';
     recordScore.style.display = 'flex';
-    console.log(finalScore);
     scoreValue.innerText = finalScore;
+    renderScores();
 }
 
 // variables for Scoreboard
@@ -152,14 +152,13 @@ var allScores = [];
 function renderScores() {
     scoreboard.innerHTML = '';
 
-
-
     // Render a new li for each score
     for (var i = 0; i < allScores.length; i++) {
         var score = allScores[i];
+        console.log(score);
 
         var li = document.createElement('li');
-        li.textContent = score;
+        li.textContent = score.initialsText + ': ' + score.finalScore;
         li.setAttribute('data-index', i);
 
         scoreboard.appendChild(li);
@@ -176,7 +175,7 @@ function init() {
     }
 
     // Renders scores to the DOM
-    renderScores();
+    // renderScores();
 }
 
 function storeScores() {

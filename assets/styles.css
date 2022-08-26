@@ -148,6 +148,7 @@ h6 {
 
 .score-card ul {
     display: flex;
+    flex-direction: column;
 }
 
 .score-card li {
