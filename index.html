@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <h1><a href="#" class="highscores">Highscores</a></h1>
+        <h1 id="title"> The Lord of the Rings</a></h1>
         <div> 
             <p id="timer"></p>
         </div>
@@ -20,7 +20,7 @@
 
     <main>
         <section class="container" id="intro">
-            <h2>Lord of the Rings Quiz</h2>
+            <h2>The Lord of the Rings Quiz</h2>
             <p>
                 In this fast paste game you will be quized on Lord of the Rings inspired questions starting with 100 seconds. Answering questions correctly does not affect the timer but incorrectly answering questions will result in seconds lost, so be quick but be careful. The amount of time left on the clock will determine your score. Goodluck!
             </p>
@@ -37,7 +37,7 @@
             </ul>
         </section>
         <section class="score-card" id="score" style="display: none;">
-            <h2> Your score</h2>
+            <h2>Your score: <span id="score-value"></span></h2>
             <form id="save-score" method="POST">
                 <label for="player-initials">Save Score: </label>
                 <input type="text" placeholder="Initials" name="player-initials" id="player-initials">

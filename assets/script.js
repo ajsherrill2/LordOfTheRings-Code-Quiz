@@ -157,8 +157,10 @@ function renderScores() {
         var score = allScores[i];
         console.log(score);
 
+
+
         var li = document.createElement('li');
-        li.textContent = score.initialsText + ': ' + score.finalScore;
+        li.textContent = score.initialsText.toUpperCase() + ': ' + score.finalScore;
         li.setAttribute('data-index', i);
 
         scoreboard.appendChild(li);

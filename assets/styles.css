@@ -38,8 +38,8 @@ header {
    padding: 0 3% 0 3%;
 }
 
-.highscores {
-    text-decoration: none;
+#title {
+    font-family: sans-serif,'Courier New', Courier, monospace;
     color: var(--white);
     font-weight: 300;
     font-size: 1.3rem;
