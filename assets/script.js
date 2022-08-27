@@ -1,4 +1,4 @@
-// Function and variables for starting the quiz and timer
+// Globally scoped variables
 var startQuiz = document.querySelector('.start-quiz');
 var timerEl = document.getElementById('timer');
 var revealQuestion = document.getElementById('question');
@@ -6,7 +6,7 @@ var recordScore = document.getElementById('score');
 var hide = document.getElementById('intro');
 
 
-
+// Adds click event to 'Start Quiz' button
 startQuiz.addEventListener('click', function() {
     playGame()
 });
@@ -26,7 +26,7 @@ function playGame() {
             timerEl.textContent = 'Time: ' + timeLeft;
             timeLeft--;
         } else if (timeLeft <= 0) {
-            timerEl.textContent = 'Time: ' + 0;
+            timerEl.textContent = 'Time: ' + 0; // If timer reaches Zero then the gameOver() function is executed
             gameOver();
         } else {
             timerEl.textContent = 'Time: ' + 0;
@@ -50,7 +50,7 @@ function playGame() {
   
 };
 
-
+// Object Variable for questions container content
 var questions = [
     {
         questionNum: 'Question 1',
@@ -90,6 +90,7 @@ var questions = [
     },
 ]
 
+// Globally scoped variables for nextQuestion() function
 var questionTitle = document.getElementById('question-num')
 var questionText = document.getElementById('question-text');
 var choiceA = document.getElementById('choice-a');
@@ -98,6 +99,7 @@ var choiceC = document.getElementById('choice-c');
 var choiceD = document.getElementById('choice-d');
 var questionIndex = 0
 
+// This function adds content to an array for question boxes
 function nextQuestion() {
     if (questionIndex < questions.length) {
         questionTitle.textContent = questions[questionIndex].questionNum;
@@ -106,8 +108,8 @@ function nextQuestion() {
         choiceB.textContent = questions[questionIndex].choice2;
         choiceC.textContent = questions[questionIndex].choice3;
         choiceD.textContent = questions[questionIndex].choice4;
-    } else {
-        finalScore = timeLeft;
+    } else { // Stops timer after last question and executes gameOver() function
+        finalScore = timeLeft; 
         clearInterval(timeInterval);
         gameOver();
     }
@@ -115,11 +117,15 @@ function nextQuestion() {
 
 let finalScore;
 
+
+// Click Events for each button that then run checkAnswer() function
 choiceA.addEventListener('click', checkAnswer);
 choiceB.addEventListener('click', checkAnswer);
 choiceC.addEventListener('click', checkAnswer);
 choiceD.addEventListener('click', checkAnswer);
 
+// Checks if answer is true and if not subtracts 20 seconds from time left
+// executes nextQuestion() function
 function checkAnswer(e) {
     if (questions[questionIndex].answer === e.target.innerHTML) {
         questionIndex++;
@@ -131,6 +137,8 @@ function checkAnswer(e) {
     }  
 }
 
+// Hides Intro, Questions, and timer
+// Displays recorded score and executes renderScore() function
 function gameOver() {
     hide.style.display = 'none';
     revealQuestion.style.display = 'none';
@@ -158,7 +166,7 @@ function renderScores() {
         console.log(score);
 
 
-
+        // Creates new li with intitials and attached score
         var li = document.createElement('li');
         li.textContent = score.initialsText.toUpperCase() + ': ' + score.finalScore;
         li.setAttribute('data-index', i);
@@ -175,15 +183,14 @@ function init() {
     if (storedScores !== null) {
         allScores = storedScores;
     }
-
-    // Renders scores to the DOM
-    // renderScores();
 }
 
+// Stingifies all scores to localStorage
 function storeScores() {
     localStorage.setItem('allScores', JSON.stringify(allScores));
 }
 
+// Submit event that pastes each score before the last and executes storeScores() and renderScores()
 scoreForm.addEventListener('submit', function(event) {
     event.preventDefault();
 
