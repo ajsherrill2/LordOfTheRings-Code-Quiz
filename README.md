@@ -4,12 +4,11 @@
 
 In this projet I was tasked with creating a quiz starting from scratch by writing and HTML file, CSS file, and a Javascript file. The onjective of this application is to begin a timer once the player clicks the Start Quiz button, the players score is based on the time remaining and if an incorrect selection is made 20 seconds is subtracted from the time. Upon completion the player will be aloud to save their score by typing in their intitials.
 
-## Table of Contents (Optional)
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
-- [License](#license)
 
 ## Installation
 
@@ -39,7 +38,7 @@ Finally I wrote a function to store the players new score and the input of the p
 
 ## Usage
 
-You can find the new live application at <!-- insert deployed link here -->
+You can find the new live application at https://ajsherrill2.github.io/LordOfTheRings-Code-Quiz/
 
 <img src=".\assets\images\Lord-of-the-Rings-Quiz.gif">
 
@@ -54,7 +53,7 @@ Once all questions are answered or time runs out the player will see their new s
 
 Collaborators:
 
-Shelby Hernandez - <!-- Insert GitHub link -->
+Shelby Hernandez - https://github.com/Shernandez927
 
 Tomas Dias - https://github.com/tomasdiaz83
 
