@@ -1,5 +1,7 @@
 # <Lord-of-the-Rings-Quiz>
 
+ ### This project is the best
+
 ## Description
 
 In this projet I was tasked with creating a quiz starting from scratch by writing and HTML file, CSS file, and a Javascript file. The onjective of this application is to begin a timer once the player clicks the Start Quiz button, the players score is based on the time remaining and if an incorrect selection is made 20 seconds is subtracted from the time. Upon completion the player will be aloud to save their score by typing in their intitials.
